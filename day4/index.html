@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Skills Card</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1 class="main-title">Welcome To Add Your Skills.</h1>
+    <div class="card">
+        <h1>My Skills</h1>
+
+        <div class="dropdown-container">
+            <label for="language-select">Language:</label>
+            <select name="languages" id="language-select">
+                <option value="html">HTML</option>
+                <option value="css">CSS</option>
+                <option value="js">JavaScript</option>
+                <option value="react">React</option>
+                <option value="nodejs">Node.js</option>
+                <option value="mongodb">MongoDB</option>
+            </select>
+        </div>
+
+        <div class="dropdown-container">
+            <label for="proficiency-select">Proficiency:</label>
+            <select name="proficiency" id="proficiency-select">
+                <option value="advanced">Advanced</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="basic">Basic</option>
+            </select>
+        </div>
+
+        <button id="add-skill-btn">Add Skill</button>
+
+        <div id="skills-display">
+            <h2>Your Added Skills</h2>
+            <ul id="skills-list"></ul>
+            <p id="error-message" class="error-message"></p>
+        </div>
+    </div>
+    <script src="index.js"></script>
+
+</body>
+</html>
