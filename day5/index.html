@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Business Card</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="card">
+    <button id="theme-toggle">🔦</button>
+    <h1>Pawan kumar</h1>
+    <h2>Full Stack Developer</h2>
+    
+    <img src="D:\VS code file\45days\day2\IMG_20241205_172600_227.jpg" alt="Pawan Kumar's profile picture">
+    
+    <p>
+        Pawan Kumar, a BTech 2nd-year student from Uttaranchal University, passionate about AI and web development, with experience in coding, hackathons, and building innovative projects.
+    </p>
+    
+    <h3>Social Profiles</h3>
+    <ul class="social-links">
+        <li><a href="https://github.com/features/copilot" target="_blank">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></li>
+    </ul>
+</div>
+
+<script>
+    const themeToggleButton = document.getElementById('theme-toggle');
+    const body = document.querySelector('body');
+
+    themeToggleButton.addEventListener('click', function() {
+        body.classList.toggle('dark-mode');
+
+        // Change the icon based on the theme
+        if (body.classList.contains('dark-mode')) {
+            themeToggleButton.textContent = '☠️'; // Sun icon for dark mode
+        } else {
+            themeToggleButton.textContent = '🔦'; // Moon icon for light mode
+        }
+    });
+</script>
+
+</body>
+</html>

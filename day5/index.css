@@ -1,0 +1,110 @@
+body {
+            font-family: Arial, sans-serif;
+            background-color: #fcfdfd;
+            color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .card {
+            width: 350px;
+            background-color: #eaeaea;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #4e5660;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            position: relative; /* For positioning the toggle button */
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-top: 15px;
+        }
+        h1 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        h2 {
+            margin: 5px 0;
+            color: #777;
+            font-weight: normal;
+            font-size: 18px;
+        }
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .social-links {
+
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-links a {
+            color: #6e6e6e;
+            border: 2px solid #59595a;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .social-links a:hover {
+            background-color: #080808;
+            color: #fff;
+        }
+
+        /* Theme Toggle Button */
+        #theme-toggle {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: 1px solid #333;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark-mode .card {
+            background-color: #1e1e1e;
+            border-color: #444;
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.5);
+        }
+
+        body.dark-mode h2 {
+            color: #aaa;
+        }
+
+        body.dark-mode .social-links a {
+            color: #8a8a8a;
+            border-color: #7c7b7c;
+        }
+
+        body.dark-mode .social-links a:hover {
+            background-color: #fdfdfd;
+            color: #121212;
+        }
+        
+        body.dark-mode #theme-toggle {
+            color: #e0e0e0;
+            border-color: #e0e0e0;
+        }
