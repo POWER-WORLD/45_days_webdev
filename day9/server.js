@@ -1,14 +1,72 @@
-const connectToMongo = require('./db');
-const express = require('express')
+// server.js - MongoDB Connection Challenge
+const express = require('express');
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const app = express();
+const PORT = 3000;
 
-connectToMongo();
-const app = express()
-const port = 3000
+// Database name
+const dbName = 'resumeData';
+let db;
 
-app.get('/api', (req, res) => {
-  res.send('Hello World!')
-})
+// 🔑 Build the MongoDB URI safely
+// (encode password to avoid issues with @, #, :, etc.)
+const username = 'pk0403564_db_user';
+const password = encodeURIComponent('HgdjVpCkGpmTyBUv'); // IMPORTANT
+const cluster = 'cluster0.yj2ooko';
+const mongoUrl = `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
-app.listen(port, () => {
-  console.log(`Example app listening on port http:/localhost:${port}`)
-})
+// Async function to handle MongoDB connection
+async function connectToMongoDB() {
+  const client = new MongoClient(mongoUrl, {
+    serverApi: {
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    },
+  });
+
+  try {
+    // Connect to MongoDB
+    await client.connect();
+    console.log('✅ Connected successfully to MongoDB Atlas');
+
+    // Get database reference
+    db = client.db(dbName);
+    console.log(`📊 Using database: ${dbName}`);
+
+    // Test the connection with a ping
+    await db.command({ ping: 1 });
+    console.log('🏓 Database ping successful');
+
+    return db;
+  } catch (error) {
+    console.error('❌ MongoDB connection error:', error.message);
+    throw error;
+  }
+}
+
+// Middleware
+app.use(express.json());
+
+// Basic API route to test database connection
+app.get('/api/status', (req, res) => {
+  res.json({
+    message: 'MongoDB connection successful!',
+    database: dbName,
+    status: db ? 'connected' : 'not connected',
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// Start server after connecting to MongoDB
+connectToMongoDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+      console.log(`📡 Test your connection: http://localhost:${PORT}/api/status`);
+    });
+  })
+  .catch((error) => {
+    console.error('❌ Failed to start server:', error.message);
+    process.exit(1);
+  });
