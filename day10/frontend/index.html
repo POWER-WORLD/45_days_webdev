@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+
+        }
+
+        .container {
+            max-width: 80%;
+            margin: auto;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: none;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .project {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .project button[onclick=deleteProject] {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Test MongoDB API</h1>
+
+
+
+        <!-- Project Input Form -->
+        <form id="projectForm">
+            <input type="text" id="name" placeholder="Project Name" required />
+            <input type="text" id="tech" placeholder="Technologies (comma separated)" required />
+            <input type="number" id="year" placeholder="Year" required />
+            <input type="url" id="projectURL" placeholder="Link of project" />
+            <button type="submit">Add Project</button>
+            <button type="button" onclick="getProjects()">Fetch Projects</button>
+        </form>
+
+        <!-- Projects List -->
+        <div id="projects"></div>
+
+        <script>
+            const API_URL = "http://localhost:3000/api/projects";
+
+            // GET all projects
+            async function getProjects() {
+                const res = await fetch(API_URL);
+                const data = await res.json();
+                displayProjects(data);
+            }
+            getProjects(); // initial fetch
+            // Handle form submit → POST new project
+            document.getElementById("projectForm").addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const name = document.getElementById("name").value;
+                const techInput = document.getElementById("tech").value;
+                const year = parseInt(document.getElementById("year").value);
+                const projectURL = document.getElementById("projectURL").value;
+
+                const tech = techInput.split(",").map(t => t.trim());
+                const newProject = { name, tech, year, projectURL };
+
+                try {
+                    const res = await fetch(API_URL, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(newProject)
+                    });
+
+                    const result = await res.json();
+                    alert("✅ Project added with ID: " + result.insertedId);
+
+                    e.target.reset();
+                    getProjects(); // refresh list
+                } catch (err) {
+                    alert("❌ Error adding project: " + err.message);
+                }
+            });
+
+            // DELETE a project
+            async function deleteProject(id) {
+                if (!confirm("Are you sure you want to delete this project?")) return;
+
+                try {
+                    const res = await fetch(`${API_URL}/${id}`, { method: "DELETE" });
+                    const result = await res.json();
+                    alert("✅ " + result.message);
+                    getProjects(); // refresh list
+                } catch (err) {
+                    alert("❌ Error deleting project: " + err.message);
+                }
+            }
+
+            // DELETE project
+            async function deleteProject(id) {
+                if (!confirm("Are you sure you want to delete this project?")) return;
+
+                try {
+                    const res = await fetch(`/api/projects/${id}`, { method: "DELETE" });
+                    const result = await res.json();
+
+                    if (result.deletedCount > 0) {
+                        alert("✅ Project deleted!");
+                        getProjects();
+                    } else {
+                        alert("❌ Delete failed!");
+                    }
+                } catch (err) {
+                    alert("Error: " + err.message);
+                }
+            }
+
+            // UPDATE project
+            async function updateProject(id) {
+                const newName = prompt("Enter new project name:");
+                const newTech = prompt("Enter new technologies (comma separated):");
+                const newYear = prompt("Enter new year:");
+
+                if (!newName || !newTech || !newYear) return alert("❌ All fields required!");
+
+                const updatedProject = {
+                    name: newName,
+                    tech: newTech.split(",").map((t) => t.trim()),
+                    year: parseInt(newYear),
+                };
+
+                try {
+                    const res = await fetch(`/api/projects/${id}`, {
+                        method: "PUT",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(updatedProject),
+                    });
+
+                    const result = await res.json();
+                    if (result.modifiedCount > 0) {
+                        alert("✅ Project updated!");
+                        getProjects();
+                    } else {
+                        alert("❌ Update failed!");
+                    }
+                } catch (err) {
+                    alert("Error: " + err.message);
+                }
+            }
+
+
+
+            // Close update modal
+            function closeUpdateModal() {
+                document.getElementById("updateModal").style.display = "none";
+            }
+
+            // Render projects on page
+            function displayProjects(projects) {
+                const container = document.getElementById("projects");
+                container.innerHTML = "";
+                projects.forEach(p => {
+                    const div = document.createElement("div");
+                    div.className = "project";
+                    div.innerHTML = `
+                                    <h3>${p.name}</h3>
+                                    <p><b>Tech:</b> ${p.tech ? p.tech.join(", ") : "N/A"}</p>
+                                    <p><b>Year:</b> ${p.year || "N/A"}    <b>Link:</b> <a href="${p.projectURL || '#'}" target="_blank">${p.projectURL || "N/A"}</a></p>
+                                    <button onclick="deleteProject('${p._id}')">🗑 Delete</button>
+                                    <button onclick="updateProject('${p._id}')">✏ Edit</button>
+                                    
+                                    `;
+                    container.appendChild(div);
+                });
+            }
+        </script>
+    </div>
+</body>
+
+</html>
