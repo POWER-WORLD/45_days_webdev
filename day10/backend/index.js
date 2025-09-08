@@ -75,7 +75,7 @@ app.post("/api/projects", async (req, res) => {
 // PUT update a project by ID (Update)
 app.put("/api/projects/:id", async (req, res) => {
   try {
-    const { id } = req.params;
+    const { id } = req.params;  //Using object destructuring, we grab the id directly.
     const updatedProject = req.body;
 
     const result = await projectsCollection.updateOne(
