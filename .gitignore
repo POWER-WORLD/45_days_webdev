@@ -1,3 +1,4 @@
 # Ignore files inside day7
 package-lock.json
 node_modules/
+.env

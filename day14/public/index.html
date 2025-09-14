@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern CMS Frontend</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Task-Post</h1>
+            <ul>
+                <li><a href="#" id="nav-home">Home</a></li>
+                <li><a href="#" id="nav-login">Login</a></li>
+                <li><a href="#" id="nav-signup">Sign Up</a></li>
+                <li><a href="#" id="nav-dashboard" style="display: none;">Dashboard</a></li>
+                <li><a href="#" id="nav-logout" style="display: none;">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="auth-section" class="container">
+            <!-- Login/Signup forms will be loaded here -->
+        </section>
+
+        <section id="dashboard-section" class="container" style="display: none;">
+            <h2>Welcome to your Dashboard!</h2>
+            <button id="create-post-btn">Create New Post</button>
+            <div id="post-form-container" style="display: none;">
+                <h3>Create Post</h3>
+                <form id="post-form">
+                    <input type="text" id="post-title" placeholder="Post Title" required>
+                    <textarea id="post-content" placeholder="What's on your mind?" rows="10" required></textarea>
+                    <button type="submit">Post</button>
+                </form>
+            </div>
+            <div id="user-posts">
+                <h3>Your Posts</h3>
+                <!-- User's posts will be loaded here -->
+            </div>
+        </section>
+
+        <section id="home-section" class="container">
+            <h2>Latest Content</h2>
+            <div id="all-posts">
+                <!-- All posts will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Modern CMS</p>
+    </footer>
+
+    <script src="scrypt.js"></script>
+</body>
+</html>
