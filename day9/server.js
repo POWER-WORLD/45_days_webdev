@@ -10,9 +10,9 @@ let db;
 
 // 🔑 Build the MongoDB URI safely
 // (encode password to avoid issues with @, #, :, etc.)
-const username = 'pk0403564_db_user';
-const password = encodeURIComponent('HgdjVpCkGpmTyBUv'); // IMPORTANT
-const cluster = 'cluster0.yj2ooko';
+const username = 'your user name';
+const password = encodeURIComponent('your pass'); // IMPORTANT
+const cluster = 'your cluster name';
 const mongoUrl = `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // Async function to handle MongoDB connection
