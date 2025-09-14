@@ -12,9 +12,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 // MongoDB Atlas credentials
-const username = "pk0403564_db_user";
-const password = encodeURIComponent("HgdjVpCkGpmTyBUv"); // encode password
-const cluster = "cluster0.yj2ooko";
+const username = "";
+const password = encodeURIComponent(""); // encode password
+const cluster = "";
 const dbName = "resumeData";
 
 const mongoUrl = `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
