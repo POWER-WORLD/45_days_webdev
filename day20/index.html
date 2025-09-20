@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React with CDN</title>
+    <!-- React and ReactDOM -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        function App() {
+            return (
+                <div className="app">
+                    <ProjectCard title="E-commerce Platform" description="Full-stack e-commerce solution with React and Node.js"/>
+                    <ProjectCard title="Weather Dashboard" description="Real-time weather app with location-based forecasts"/>
+                    <ProjectCard title="Task Manager" description="Collaborative task management platform"/>
+                </div>
+            );
+        }
+        // Same component, different results!
+        function ProjectCard({title, description}) {
+            return (
+                <div className="project-card">
+                    <h3>{title}</h3>
+                    <p>{description}</p>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
