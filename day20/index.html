@@ -19,14 +19,31 @@
         function App() {
             return (
                 <div className="app">
-                    <ProjectCard title="E-commerce Platform" description="Full-stack e-commerce solution with React and Node.js"/>
-                    <ProjectCard title="Weather Dashboard" description="Real-time weather app with location-based forecasts"/>
-                    <ProjectCard title="Task Manager" description="Collaborative task management platform"/>
+                    <ProjectCard title="Cleaner Code with Modern JavaScript(props):" description="Prop destructuring allows you to extract specific values from the props object directly in the function parameter. This creates cleaner, more readable component code." />
+                    <ProjectCard title="Without Destructuring: " 
+                    description="function ProjectCard(props) {
+                                 return (
+                                 <div>
+                                 <h3>{props.title}h3>
+                                 <p>{props.description}p>
+                                 </div>
+                                 );
+                                 }"/>
+                    <ProjectCard title="With Destructuring: " 
+                    description="function ProjectCard({ title, description }) {
+                                 return (
+                                 <div>
+                                 <h3>{title}h3>
+                                 <p>{description}p>
+                                 </div>
+                                 );
+                                 }"/>
                 </div>
             );
         }
+
         // Same component, different results!
-        function ProjectCard({title, description}) {
+        function ProjectCard({ title, description }) {
             return (
                 <div className="project-card">
                     <h3>{title}</h3>
