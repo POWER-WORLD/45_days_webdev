@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>React Contact Form (CDN)</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body style="font-family: Arial, sans-serif;">
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+    function ContactForm() {
+      const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+
+      // Handle input changes
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+      };
+
+      // Handle form submission
+      const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (!formData.name || !formData.email || !formData.message) {
+          alert("⚠️ Please fill out all fields");
+          return;
+        }
+
+        console.log("Form submitted:", formData);
+        alert("✅ Thank you! Your message has been submitted.");
+
+        // Reset form
+        setFormData({ name: "", email: "", message: "" });
+      };
+
+      return (
+        <form onSubmit={handleSubmit} style={{ maxWidth: "400px", margin: "50px auto" }}>
+          <h2>Contact Us</h2>
+          <div style={{ marginBottom: "10px" }}>
+            <label>Name:</label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Enter your name"
+              required
+              style={{ width: "100%", padding: "8px" }}
+            />
+          </div>
+          <div style={{ marginBottom: "10px" }}>
+            <label>Email:</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Enter your email"
+              required
+              style={{ width: "100%", padding: "8px" }}
+            />
+          </div>
+          <div style={{ marginBottom: "10px" }}>
+            <label>Message:</label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              placeholder="Enter your message"
+              required
+              rows="4"
+              style={{ width: "100%", padding: "8px" }}
+            />
+          </div>
+          <button type="submit" style={{ padding: "10px 20px", cursor: "pointer" }}>
+            Submit
+          </button>
+        </form>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<ContactForm />);
+  </script>
+</body>
+</html>
