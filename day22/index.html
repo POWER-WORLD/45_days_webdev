@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Projects List</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body style="font-family: Arial, sans-serif;">
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState } = React;
+
+        //ProjectCard Component
+        function ProjectCard({ id, title, description }) {
+            return (
+                <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px 0", borderRadius: "6px", background: "#f9f9f9" }}>
+                    <h3>{id}: {title}</h3>
+                    <p>{description}</p>
+                </div>
+            );
+        }
+
+        //App Component
+        function App() {
+            const [projects, setProjects] = useState([
+                { id: 1, title: "Project", description: "This is the first project." },
+                { id: 2, title: "Project", description: "This is the second project." }
+            ]);
+
+            // Track the next ID
+            const [nextId, setNextId] = React.useState(3);
+            const addProject = () => {
+                setProjects([...projects, { id: nextId, title: "New Project", description: "A newly added project." }]);
+                setNextId(nextId + 1);
+            };
+
+            return (
+                <div style={{ maxWidth: "500px", margin: "20px auto" }}>
+                    <h2>My Projects</h2>
+                    <button onClick={addProject} style={{ marginBottom: "15px", padding: "8px 16px" }}>➕ Add Project</button>
+
+                    {projects.map((project) => (
+                        <ProjectCard
+                            key={project.id} //Unique key
+                            id={project.id}
+                            title={project.title}
+                            description={project.description}
+                        />
+                    ))}
+                </div>
+            );
+        }
+
+        // Render App
+        const root = ReactDOM.createRoot(document.getElementById("root"));
+        root.render(<App />);
+    </script>
+</body>
+
+</html>
