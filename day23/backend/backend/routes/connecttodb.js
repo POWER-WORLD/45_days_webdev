@@ -1,9 +1,9 @@
 const mongoose = require("mongoose");
 
 // MongoDB Atlas credentials
-const username = "pk0403564_db_user";
-const password = encodeURIComponent("HgdjVpCkGpmTyBUv");
-const cluster = "cluster0.yj2ooko";
+const username = "";
+const password = encodeURIComponent("");
+const cluster = "";
 const MONGO_URI = `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // connect to mongoose using mongoose
