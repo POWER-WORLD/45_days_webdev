@@ -1,0 +1,138 @@
+.work_experience_card {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+.work_experience_card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+.work_experience_card h3 {
+    margin: 0;
+    font-size: 1.5em;
+}
+.work_experience_card h4 {
+    margin: 5px 0;
+    font-size: 1.2em;
+    color: #555;
+}
+.work_experience_card p {
+    margin: 5px 0;
+    color: #333;
+}
+.checkbox_label {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 10px;
+}
+.experience_card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.experience_card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+.card_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+.card_header h3 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+.delete_button {
+    background: none;
+    border: none;
+    color: #e74c3c;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+.delete_button:hover {
+    background-color: rgba(231, 76, 60, 0.1);
+}
+.card_meta {
+    display: flex;
+    gap: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+.location {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+.description {
+    color: #2c3e50;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+.achievements h4,
+.technologies h4 {
+    color: #2c3e50;
+    font-size: 1rem;
+    margin: 1rem 0 0.5rem;
+}
+.achievements ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+.achievements li {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+.tech_tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.tech_tag {
+    background: #e1f5fe;
+    color: #0288d1;
+    padding: 0.25rem 0.75rem;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+@media (max-width: 768px) {
+    .experience_card {
+        padding: 1rem;
+    }
+    .card_header h3 {
+        font-size: 1.1rem;
+    }
+    .tags {
+        gap: 0.25rem;
+    }
+    .tag {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.5rem;
+    }
+    .work_experience_card {
+        padding: 1rem;
+    }
+    .card_header h3 {
+        font-size: 1.1rem;
+    }
+    .card_meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
