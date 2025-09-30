@@ -2,20 +2,7 @@ import React, { useState } from "react";
 import "./work_experience_form.css";
 
 function WorkExperienceForm({ onSubmit }) {
-    const initialState = {
-        company: "",
-        position: "",
-        startDate: "",
-        endDate: "",
-        location: "",
-        isCurrent: false,
-        description: "",
-        achievements: "",
-        technologies: "",
-        companySize: "",
-        industry: "",
-        website: "",
-    };
+    const initialState = {company: "",position: "",startDate: "",endDate: "",location: "",isCurrent: false,description: "",achievements: "",technologies: "",companySize: "",industry: "",website: ""};
 
     const [formData, setFormData] = useState(initialState);
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,7 +33,7 @@ function WorkExperienceForm({ onSubmit }) {
 
         try {
             // Validate required fields
-            if (!formData.company || !formData.position || !formData.startDate) {
+            if (!formData.company || !formData.position || !formData.startDate || (!formData.isCurrent && !formData.endDate) || !formData.description || !formData.achievements || !formData.technologies || !formData.companySize || !formData.industry || !formData.website) {
                 throw new Error('Please fill in all required fields');
             }
 
