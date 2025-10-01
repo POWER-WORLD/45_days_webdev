@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import './manage_work_experience.css';
+import Spinner from '../components/spinner';
 import WorkExperienceForm from '../components/work_experience_form';
 import WorkExperienceCard from '../components/work_experience_card';
 import { getAllWorkExperiences, addWorkExperience, deleteWorkExperience } from '../services/api';
@@ -9,50 +10,59 @@ function ManageWorkExperience() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchExperiences = async () => {
-            try {
-                setIsLoading(true);
-                const response = await getAllWorkExperiences();
-                console.log("Fetched experiences 2:", response);
-                
-                // Extract the data array from the response
-                const experiencesData = response.data || [];
-                setExperiences(experiencesData);
-                setError(null);
-            } catch (error) {
-                console.error("Failed to fetch experiences:", error);
-                setError("Failed to load experiences");
-                setExperiences([]);
-            } finally {
-                setIsLoading(false);
-            }
-        };
-        fetchExperiences();
+    // Move fetchExperiences outside useEffect and memoize it
+    const fetchExperiences = useCallback(async () => {
+        try {
+            setIsLoading(true);
+            const response = await getAllWorkExperiences();
+            console.log("Fetched experiences:", response);
+
+            // Extract the data array from the response
+            const experiencesData = response.data || [];
+            setExperiences(experiencesData);
+            setError(null);
+        } catch (error) {
+            console.error("Failed to fetch experiences:", error);
+            setError("Failed to load experiences");
+            setExperiences([]);
+        } finally {
+            setIsLoading(false);
+        }
     }, []);
+
+    // Use the memoized fetchExperiences in useEffect
+    useEffect(() => {
+        fetchExperiences();
+    }, [fetchExperiences]);
 
     const handleAddExperience = async (experienceData) => {
         try {
             const response = await addWorkExperience(experienceData);
-            // Assuming the API returns the same structure for adding
-            const newExperience = response.data?.[0] || response;
-            setExperiences(prev => [...prev, newExperience]);
+            console.log("Added experience:", response);
+            // After adding, refresh the experiences list
+            await fetchExperiences();
         } catch (error) {
             console.error("Failed to add experience:", error);
         }
+
     };
 
     const handleDeleteExperience = async (id) => {
         try {
             await deleteWorkExperience(id);
-            setExperiences(prev => prev.filter(exp => exp.id !== id));
+            // After successful deletion, refresh the experiences list
+            await fetchExperiences();
         } catch (error) {
             console.error("Failed to delete experience:", error);
         }
     };
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return (
+            <div className="spinner-container">
+                <Spinner />
+            </div>
+        );
     }
 
     if (error) {
@@ -71,10 +81,10 @@ function ManageWorkExperience() {
                     <p>No work experiences found. Please add some.</p>
                 ) : (
                     experiences.map(exp => (
-                        <WorkExperienceCard 
-                            key={exp._id || exp.id || Math.random()} 
-                            experience={exp} 
-                            onDelete={() => handleDeleteExperience(exp._id || exp.id)} 
+                        <WorkExperienceCard
+                            key={exp._id || exp.id}
+                            experience={exp}
+                            onDelete={() => handleDeleteExperience(exp._id || exp.id)}
                         />
                     ))
                 )}
