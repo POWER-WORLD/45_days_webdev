@@ -1,0 +1,1 @@
+implemented knowledge of day29 in day26 frontend
