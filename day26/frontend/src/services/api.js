@@ -8,7 +8,7 @@ export const getAllWorkExperiences = async () => {
         console.log("Fetched experiences:", response.data);
         return response.data;
     } catch (error) {
-        console.error('Error fetching experiences:', error);
+        console.error('Error fetching experiences from database:', error);
         throw error;
     }
 };
@@ -18,7 +18,7 @@ export const addWorkExperience = async (experienceData) => {
         const response = await axios.post(`${API_BASE_URL}/work-experience`, experienceData);
         return response.data;
     } catch (error) {
-        console.error('Error adding experience:', error);
+        console.error('Error adding experience to database:', error);
         throw error;
     }
 };
@@ -28,7 +28,7 @@ export const deleteWorkExperience = async (id) => {
         const response = await axios.delete(`${API_BASE_URL}/work-experience/${id}`);
         return response.data;
     } catch (error) {
-        console.error('Error deleting experience:', error);
+        console.error('Error deleting experience from database:', error);
         throw error;
     }
 };

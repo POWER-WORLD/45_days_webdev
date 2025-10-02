@@ -22,7 +22,7 @@ function ManageWorkExperience() {
             setExperiences(experiencesData);
             setError(null);
         } catch (error) {
-            console.error("Failed to fetch experiences:", error);
+            console.error("Failed to fetch experiences :", error);
             setError("Failed to load experiences");
             setExperiences([]);
         } finally {
