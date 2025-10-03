@@ -1,15 +1,15 @@
 .work_experience_form {
     padding: 10px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--border-color);
     border-radius: 12px;
-    background-color: #ffffff;
+    background-color: var(--card-background);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .work_experience_form h2 {
     text-align: center;
-    color: #333;
+    color: var(--text-color);
     margin-bottom: 10px;
     font-weight: 600;
 }
@@ -24,11 +24,12 @@
 .form input[type="url"],
 .form textarea {
     padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 8px; /* Softer corners */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
     width: 100%;
     box-sizing: border-box;
-    background-color: #fdfdfd;
+    background-color: var(--form-background);
+    color: var(--text-color);
     transition: border-color 0.3s, box-shadow 0.3s;
     font-size: 10px;
 }
@@ -36,8 +37,14 @@
 .form input:focus,
 .form textarea:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px var(--primary-color-alpha);
+}
+
+.form input::placeholder,
+.form textarea::placeholder {
+    color: var(--secondary-color);
+    opacity: 0.7;
 }
 
 .form label {
@@ -45,14 +52,14 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px; /* Adjusted gap */
-    color: #555;
+    color: var(--text-color);
     font-weight: 500;
 }
 
 .submit_button {
     padding: 12px 20px;
     background: linear-gradient(90deg, #007bff, #0056b3);
-    color: white;
+    color: var(--text-color);
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -74,7 +81,7 @@
 }
 
 .error_message {
-    color: #dc3545;
+    color: var(--danger-color);
     background-color: #f8d7da;
     border: 1px solid #f5c6cb;
     border-radius: 4px;
@@ -92,4 +99,19 @@
 .submit_button:disabled {
     background: #cccccc;
     cursor: not-allowed;
+}
+
+/* Add these CSS variables to your theme.css file */
+.light-theme {
+    --form-background: #ffffff;
+    --primary-color: #007bff;
+    --primary-color-alpha: rgba(0, 123, 255, 0.2);
+    --secondary-color: #6c757d;
+}
+
+.dark-theme {
+    --form-background: #2d2d2d;
+    --primary-color: #0d6efd;
+    --primary-color-alpha: rgba(13, 110, 253, 0.2);
+    --secondary-color: #adb5bd;
 }

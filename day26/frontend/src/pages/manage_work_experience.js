@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import './manage_work_experience.css';
+import '../components/theme.css';
 import Spinner from '../components/spinner';
 import WorkExperienceForm from '../components/work_experience_form';
 import WorkExperienceCard from '../components/work_experience_card';
 import { getAllWorkExperiences, addWorkExperience, deleteWorkExperience } from '../services/api';
+import { useTheme } from '../context/themecontext';
 
 function ManageWorkExperience() {
     const [experiences, setExperiences] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { theme, toggleTheme } = useTheme();
 
     // Move fetchExperiences outside useEffect and memoize it
     const fetchExperiences = useCallback(async () => {
@@ -70,7 +73,14 @@ function ManageWorkExperience() {
     }
 
     return (
-        <div className="manage_experience_page">
+        <div className={`manage_experience_page ${theme}-theme`}>
+            <button 
+                onClick={toggleTheme}
+                className="theme-toggle-button"
+            >
+                Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode
+            </button>
+            
             <div className="form_container">
                 <WorkExperienceForm onSubmit={handleAddExperience} />
             </div>
@@ -85,6 +95,7 @@ function ManageWorkExperience() {
                             key={exp._id || exp.id}
                             experience={exp}
                             onDelete={() => handleDeleteExperience(exp._id || exp.id)}
+                            theme={theme}
                         />
                     ))
                 )}

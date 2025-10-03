@@ -1,29 +1,36 @@
 .work_experience_card {
     padding: 10px;
     margin-bottom: 10px;
-    border: 2px solid #e0e0e0;
+    border: 2px solid var(--border-color);
     border-radius: 12px;
-    background-color: #ffffff;
+    background-color: var(--card-background);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
 .work_experience_card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
+
 .work_experience_card h3 {
     margin: 0;
     font-size: 1.5em;
+    color: var(--text-color);
 }
+
 .work_experience_card h4 {
     margin: 5px 0;
     font-size: 1.2em;
-    color: #555;
+    color: var(--secondary-text);
 }
+
 .work_experience_card p {
     margin: 5px 0;
-    color: #333;
+    color: var(--text-color);
 }
+
 .checkbox_label {
     display: flex;
     flex-direction: row;
@@ -31,11 +38,11 @@
     gap: 10px;
 }
 .experience_card {
-    background: #ffffff;
+    background: var(--card-background);
     border-radius: 12px;
     padding: 1.5rem;
     margin: 1rem 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px var(--shadow-color);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .experience_card:hover {
@@ -50,14 +57,14 @@
 }
 .card_header h3 {
     margin: 0;
-    color: #2c3e50;
+    color: var(--text-color);
     font-size: 1.25rem;
     font-weight: 600;
 }
 .delete_button {
     background: none;
     border: none;
-    color: #e74c3c;
+    color: var(--danger-color);
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.25rem 0.5rem;
@@ -65,12 +72,12 @@
     transition: all 0.2s ease;
 }
 .delete_button:hover {
-    background-color: rgba(231, 76, 60, 0.1);
+    background-color: var(--danger-hover);
 }
 .card_meta {
     display: flex;
     gap: 1rem;
-    color: #666;
+    color: var(--secondary-text);
     font-size: 0.9rem;
     margin-bottom: 1rem;
 }
@@ -80,13 +87,13 @@
     gap: 0.25rem;
 }
 .description {
-    color: #2c3e50;
+    color: var(--text-color);
     line-height: 1.6;
     margin-bottom: 1rem;
 }
 .achievements h4,
 .technologies h4 {
-    color: #2c3e50;
+    color: var(--text-color);
     font-size: 1rem;
     margin: 1rem 0 0.5rem;
 }
@@ -95,7 +102,7 @@
     padding-left: 1.5rem;
 }
 .achievements li {
-    color: #2c3e50;
+    color: var(--text-color);
     margin-bottom: 0.5rem;
 }
 .tech_tags {
@@ -104,13 +111,37 @@
     gap: 0.5rem;
 }
 .tech_tag {
-    background: #e1f5fe;
-    color: #0288d1;
+    background: var(--tag-background);
+    color: var(--tag-text);
     padding: 0.25rem 0.75rem;
     border-radius: 16px;
     font-size: 0.85rem;
     font-weight: 500;
 }
+
+/* Theme variables */
+.light-theme {
+    --card-background: #ffffff;
+    --text-color: #2c3e50;
+    --secondary-text: #666666;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --danger-color: #e74c3c;
+    --danger-hover: rgba(231, 76, 60, 0.1);
+    --tag-background: #e1f5fe;
+    --tag-text: #0288d1;
+}
+
+.dark-theme {
+    --card-background: #2d2d2d;
+    --text-color: #f8f9fa;
+    --secondary-text: #adb5bd;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --danger-color: #ff6b6b;
+    --danger-hover: rgba(255, 107, 107, 0.1);
+    --tag-background: #3d4b5c;
+    --tag-text: #8cc1ff;
+}
+
 @media (max-width: 768px) {
     .experience_card {
         padding: 1rem;
