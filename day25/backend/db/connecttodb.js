@@ -1,4 +1,4 @@
-// db.js
+// connecttodb.js, This file connects to MongoDB using Mongoose
 const mongoose = require("mongoose");
 const { mongo_url, db_name } = require("./config"); // same as before
 
