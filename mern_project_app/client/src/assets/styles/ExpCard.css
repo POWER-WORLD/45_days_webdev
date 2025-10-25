@@ -1,0 +1,160 @@
+.exp-card {
+  max-width: 380px;
+  background: linear-gradient(180deg, var(--bg) 0%, #081224 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(2, 6, 23, 0.6);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 16px;
+  border-top: 6px solid #6c63ff;
+  /* will be overridden inline via style prop */
+}
+
+/* action buttons in top-right corner (Edit/Delete) */
+.card-actions {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.action-btn {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.12s, background 0.12s;
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+}
+
+.edit-btn {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: #061226;
+  font-weight: 600;
+  border: none;
+}
+
+.delete-btn {
+  background: rgb(245, 7, 7);
+  color: #ffffff;
+  border: 1px solid rgba(255, 80, 100, 0.12);
+}
+
+/* top layout */
+.exp-top {
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.exp-dates-short {
+  margin-top: 4px;
+}
+
+.exp-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.exp-company {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #e6eefc;
+}
+
+.badge {
+  background: #6c63ff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+}
+
+/* position, location, description */
+.exp-position {
+  margin: 6px 0;
+  font-size: 1rem;
+  color: #cfe9ff;
+  font-weight: 600;
+}
+
+.exp-location {
+  color: #9fb0d9;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.exp-description {
+  margin: 0;
+  color: #c8d3e8;
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+/* achievements */
+.exp-achievements {
+  margin-top: 8px;
+}
+
+.exp-achievements h5 {
+  color: #e6eefc;
+  margin: 0 0 6px 0;
+  font-size: 0.95rem;
+}
+
+.exp-achievements ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.exp-achievements li {
+  color: #c8d3e8;
+  margin-bottom: 0.35rem;
+}
+
+/* technologies as pills (skill-like) */
+.exp-technologies {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tech-tag {
+  background: rgba(255, 255, 255, 0.06);
+  color: #dbe9ff;
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* footer dates */
+.exp-footer-dates {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: #9fb0d9;
+}
+
+/* hover lift */
+.exp-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(2, 6, 23, 0.7);
+}

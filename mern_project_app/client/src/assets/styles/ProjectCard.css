@@ -1,0 +1,149 @@
+.project-card {
+  max-width: 380px;
+  background: linear-gradient(180deg, var(--bg) 0%, #081224 100%);
+  color: #fff;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(2,6,23,0.6);
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* action buttons in top-right corner (Edit/Delete) */
+.card-actions {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  gap: 8px;
+  z-index: 5;
+}
+
+.action-btn {
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.12s, background 0.12s;
+}
+.action-btn:hover { transform: translateY(-2px); }
+
+.edit-btn {
+  background: linear-gradient(90deg,var(--accent-1), var(--accent-2));
+  color: #061226;
+  font-weight: 600;
+  border: none;
+}
+.delete-btn {
+  background: rgb(245, 7, 7);
+  color: #ffffff;
+  border: 1px solid rgba(255, 80, 100, 0.12);
+}
+
+/* project image */
+.project-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  opacity: 0.95;
+  background: linear-gradient(90deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2));
+}
+
+/* content */
+.project-content {
+  padding: 16px;
+}
+
+/* title and badge */
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.project-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #e6eefc;
+  margin: 0;
+}
+.badge {
+  background: #6c63ff;
+  color: white;
+  padding: 4px 8px;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+}
+
+/* description */
+.project-description {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #c8d3e8;
+}
+
+/* tech as skill-like pills */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.tech-item {
+  background: rgba(255,255,255,0.06);
+  color: #dbe9ff;
+  font-size: 0.78rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* muted tech item */
+.tech-item.muted {
+  opacity: 0.6;
+}
+
+/* footer */
+.project-footer {
+  margin-top: 14px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #9fb0d9;
+}
+.status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.75rem;
+  text-transform: capitalize;
+}
+.status.completed { background: #28a745; color: #fff; }
+.status.in-progress { background: #ffc107; color: #071226; }
+.status.on-hold { background: #dc3545; }
+.status.planned { background: #4f36cd; }
+
+/* links */
+.links {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+}
+.links a {
+  text-decoration: none;
+  color: #60a5fa;
+  font-weight: 600;
+}
+.links a:hover { color: #cfe9ff; }
+
+/* hover lift */
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(2,6,23,0.7);
+}

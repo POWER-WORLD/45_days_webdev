@@ -1,0 +1,101 @@
+.skill-form-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  
+}
+
+.skill-form-modal {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  color: #000000;
+  text-align: center;
+  padding: 8px;
+  border-radius: var(--radius);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.skill-form h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.skill-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+  font-weight: 500;
+  color: #444;
+}
+
+.skill-form input,
+.skill-form textarea,
+.skill-form select {
+  margin-top: 5px;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: var(--radius);
+  font-size: 0.95rem;
+  transition: border 0.2s;
+}
+
+.skill-form input:focus,
+.skill-form textarea:focus,
+.skill-form select:focus {
+  border-color: #61dafb;
+  outline: none;
+}
+
+.skill-form textarea {
+  resize: none;
+}
+
+.skill-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.save-btn,
+.cancel-btn {
+  border: none;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn {
+  background: #61dafb;
+  color: #fff;
+}
+
+.save-btn:hover {
+  background: #4dc3e9;
+}
+
+.cancel-btn {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.cancel-btn:hover {
+  background: #ddd;
+}

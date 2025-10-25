@@ -1,0 +1,122 @@
+.experience-container {
+  min-height: 82vh;
+  padding: var(--left-container-padding);
+  width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(180deg, var(--bg) 0%, #081224 100%);
+  color: white;
+  margin-top: 0px;
+  position: relative;
+  z-index: 1;
+  /* max-width: 1200px; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  max-width: 100%;
+}
+
+.page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 8px 0;
+}
+
+.page-description {
+  color: #dbeafe;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.35;
+  max-width: 720px;
+}
+
+.add-exp-btn {
+  padding: 12px 24px;
+  background: linear-gradient(90deg,var(--accent-1), var(--accent-2));
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 600;
+  transition: transform 0.2s, background 0.2s;
+  white-space: nowrap;
+}
+
+.add-exp-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Experience cards grid (skill-like) */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(333px, 1fr));
+  gap: 15px;
+  justify-items: center;
+  width: 100%;
+  margin: 40px 0;
+}
+
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 40vh;
+}
+
+.error-message {
+  color: #ffb4b4;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  background: rgba(255, 80, 80, 0.06);
+  padding: 10px;
+  border-radius: var(--radius);
+}
+
+.no-exp-message {
+  color: #c8d3e8;
+  font-size: 1rem;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .add-exp-btn {
+    width: 100%;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .page-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .experience-container {
+    padding: 20px 10px;
+  }
+}
