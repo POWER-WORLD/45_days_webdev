@@ -130,6 +130,35 @@
   color: var(--text);
 }
 
+/* contact section */
+/* .contact-section {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.contact-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+} */
+
+.contact-button {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.contact-button:hover {
+  background: #4dc3e9;
+}
+
+
 /* skills section */
 .skills-section {
   width: 100%;

@@ -3,11 +3,13 @@ import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import "../assets/styles/About.css";
 import { getAllSkills } from "../services/skillService";
+import ContactForm from '../components/ContactForm';
 
 function About() {
   const [skills, setSkills] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showContactForm, setShowContactForm] = useState(false);
 
   useEffect(() => {
     const fetchSkills = async () => {
@@ -27,13 +29,19 @@ function About() {
     fetchSkills();
   }, []);
 
+  const handleContactSubmit = async (contactData) => {
+    // TODO: Implement the API call to save contact data
+    console.log('Contact form submitted:', contactData);
+    // You can add API integration here
+  };
+
   return (
     <div className="about-container">
       <div className="content-wrapper">
         <div className="about-grid">
           <div className="about-info">
             <h1 className="about-title">About Me</h1>
-            
+
             <p className="about-text">
               Hi! I'm [Your Name], a passionate full-stack developer with expertise in the MERN stack.
               I love building web applications that solve real-world problems and create meaningful experiences.
@@ -78,11 +86,48 @@ function About() {
               </li>
               <li className="fact-item">
                 <span className="fact-label">Languages:</span>
-                <span>English, [Other Languages]</span>
+                <span>English, Hindi, Chinese</span>
+              </li>
+              <li className="fact-item">
+                <span className="fact-label">Contact:</span>
+                <span>
+                  <div className="contact-section">
+                    {/* <h2 className="contact-title">Get in Touch</h2> */}
+                    <button
+                      className="contact-button"
+                      onClick={() => setShowContactForm(true)}
+                    >
+                      Contact Me
+                    </button>
+                    {showContactForm && (
+                      <ContactForm
+                        onSubmit={handleContactSubmit}
+                        onClose={() => setShowContactForm(false)}
+                      />
+                    )}
+                  </div>
+
+                </span>
               </li>
             </ul>
           </div>
         </div>
+
+        {/* <div className="contact-section">
+          <h2 className="contact-title">Get in Touch</h2>
+          <button 
+            className="contact-button"
+            onClick={() => setShowContactForm(true)}
+          >
+            Contact Me
+          </button>
+          {showContactForm && (
+            <ContactForm
+              onSubmit={handleContactSubmit}
+              onClose={() => setShowContactForm(false)}
+            />
+          )}
+        </div> */}
 
         <div className="skills-section">
           <h2 className="skills-title">What I Do</h2>

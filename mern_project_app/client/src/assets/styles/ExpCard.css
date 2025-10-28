@@ -1,17 +1,17 @@
 .exp-card {
   max-width: 380px;
+  min-width: 300px;
   background: linear-gradient(180deg, var(--bg) 0%, #081224 100%);
   color: #fff;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: 0 8px 28px rgba(2, 6, 23, 0.6);
   transition: transform 0.3s, box-shadow 0.3s;
-  margin: 15px;
   display: flex;
   flex-direction: column;
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.04);
-  padding: 16px;
+  padding: 15px;
   border-top: 6px solid #6c63ff;
   /* will be overridden inline via style prop */
 }

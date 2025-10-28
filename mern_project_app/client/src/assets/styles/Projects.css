@@ -1,5 +1,4 @@
 .project-page {
-  text-align: center;
   padding: var(--left-container-padding);
   max-width: 100%;
   margin: 0 auto;
@@ -63,7 +62,7 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(333px, 1fr));
-  gap: 15px;
+  gap: 20px;
   justify-items: center;
   width: 100%;
   margin: 40px 0;

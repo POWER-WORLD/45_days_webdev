@@ -12,7 +12,7 @@ function Home() {
         <div className="hero-left">
           {/* <img src={logo} alt="logo" className="hero-logo" /> */}
           <h1 className="hero-title">
-            Hi, I'm [Your Name] — MERN Stack Developer
+            Hi, I'm Pawan kumar — MERN Stack Developer
           </h1>
           <p className="hero-sub">
             I build modern, performant web applications using MongoDB, Express,
